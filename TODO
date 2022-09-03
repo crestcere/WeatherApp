@@ -1,0 +1,9 @@
+API App: https://openweathermap.org/api 
+
+High order component
+    Loading özelliğini week5/hoc/withLoading
+    Theme özelliğini week5/hoc/withTheme
+
+React Router DOM
+    Header links route to pages
+
