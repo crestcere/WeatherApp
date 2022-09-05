@@ -1,13 +1,15 @@
 import { GetData } from './components';
-import {Home, Detail} from './pages';
+import { Home, Detail } from './pages';
+import { DataProvider } from "./context/";
 
 function App() {
   return (
-    <div className="App">
+    <>
+      <Detail />
+      <DataProvider>
         <Home />
-        <Detail />
-        <GetData />
-    </div>
+      </DataProvider>
+    </>
   );
 }
 
