@@ -1,0 +1,46 @@
+$background-color: antiquewhite;
+$box-color: rgb(226, 204, 176);
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: $background-color;
+}
+
+.Login {
+    // border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    gap: 5px;
+
+    & .input {
+        height: max(2vh, 20px);
+        // border: blue 2px solid;
+        border-radius: 10px;
+        background-color: $box-color;
+
+        &:hover {
+            background-color: rgb(243, 230, 212);
+            border-radius: 0px;
+        }
+
+        &::placeholder  {
+            text-align: center;
+        }
+    }
+
+    & .loginbutton {
+        height: max(3vh, 20px);
+        color: red;
+        border-radius: 10px;
+        background-color: rgb(79, 79, 160);
+
+        &:hover {
+            background-color: rgb(115, 115, 185);
+            border-radius: 0px;
+        }
+    }
+}

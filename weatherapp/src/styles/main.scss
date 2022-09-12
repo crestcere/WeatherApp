@@ -1,0 +1,10 @@
+$background-color: antiquewhite;
+$box-color: rgb(226, 204, 176);
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: $background-color;
+}

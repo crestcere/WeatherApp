@@ -1,7 +1,9 @@
-import GetContextData from "./GetContextData/GetContextData";
-import {DataProvider} from "./GetContextData/GetContextData"
+import GetContextData, { GetContextDataProvider } from "./GetContextData/GetContextData";
+import IsAuth, { IsAuthProvider } from "./IsAuth";
 
 export {
     GetContextData,
-    DataProvider
+    GetContextDataProvider,
+    IsAuth,
+    IsAuthProvider
 };

@@ -1,0 +1,25 @@
+$background-color: antiquewhite;
+$box-color: rgb(226, 204, 176);
+
+.detail {
+    border: 5px solid black;
+    display: flex;
+    background-color: $background-color;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    & .data {
+        border: solid 2px blue;
+    }
+    & .home-button {
+        width: 150px;
+        border-radius: 10px;
+    }
+}
+
+.Detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
