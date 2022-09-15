@@ -50,9 +50,9 @@ const Home = () => {
                         />
                 <button type="submit" className="search-button" onClick={() => {setCity(cities)}}>Search</button>
                 <div className="history">
-                        <div id="history_1">{localStorage.getItem("recent_1")}</div>
-                        <div id="history_2">{localStorage.getItem("recent_2")}</div>
-                        <div id="history_3">{localStorage.getItem("recent_3")}</div>
+                        <button id="history_1" onClick={() => {setCity(localStorage.getItem("recent_1"))}}>{localStorage.getItem("recent_1")}</button>
+                        <button id="history_2" onClick={() => {setCity(localStorage.getItem("recent_2"))}}>{localStorage.getItem("recent_2")}</button>
+                        <button id="history_3" onClick={() => {setCity(localStorage.getItem("recent_3"))}}>{localStorage.getItem("recent_3")}</button>
                 </div>
             </div>
             <div className="right">
