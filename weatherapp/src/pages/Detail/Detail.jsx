@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { GetContextData } from "../../context";
 import { Link } from "react-router-dom";
+import apikey from "../../components/Getdata/apikey";
+import axios from "axios";
 
 import "./detail.scss"
 
@@ -8,7 +10,25 @@ const Detail = () => {
 
     const { data, setData, city, setCity } = useContext(GetContextData);
     
+    const [detail, setDetail] = useState([]);
 
+    const detailapiData = async () => {
+        const res = await axios
+            .get(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=tr&APPID=${apikey}&units=metric`);
+        console.log("res detail: ", res);    
+        if (res.status === 200) {
+            setDetail(...[res.data]);
+            console.log(detail);
+        }
+    }
+    
+    useEffect(() => {
+        detailapiData();
+    }, []);
+    
+    useEffect(() => {
+        console.log("detail: ", detail);
+    }, [detail])
 
 
     //TODO 48 hours forecast
@@ -34,6 +54,14 @@ const Detail = () => {
             <Link to="/home">
                 <button type="button" className="home-button">Home</button>
             </Link>
+            <div className="details">
+                {detail.list.map(resp => (
+                    <div className="detailss">
+                        {console.log("resp", resp)}
+                        <div>DT_TXT: {resp.dt_txt}</div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
