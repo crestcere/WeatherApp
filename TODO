@@ -1,12 +1,11 @@
 // TODO:
-    History
     Hocs
     Logout Button
     ErrorBoundary
         Icon Error
 
-
 DONE:
+    History
     Redirect if auth false
     Image
     Implement Search

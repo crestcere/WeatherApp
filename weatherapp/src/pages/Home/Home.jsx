@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { GetContextData } from "../../context";
 // import { Search, GetData } from "../../components";
-import { GetContextDataProvider } from "../../context";
 import { Link } from "react-router-dom";
 
 import "./home.scss";
@@ -10,24 +9,22 @@ const Home = () => {
 
     const { data, setData, city, setCity } = useContext(GetContextData);
 
+    let cities = ""; // For search input onChange event
+
+    // Make count and count with recent 1, 2 and 3
     const count = useRef(1);
-
-    // const [recent, setRecent] = useState([]);
-
-    let cities = "";
-
+    // Set empty string for recent cities for first time.
     useEffect(() => {
-        // setRecent(...[city]);
+        localStorage.setItem(`recent_1`, " ");
+        localStorage.setItem(`recent_2`, " ");
+        localStorage.setItem(`recent_3`, " ");
+    }, []);
+    useEffect(() => {
         localStorage.setItem(`recent_${count.current}`, city);
         count.current++
         if (count.current === 4) { count.current = 1; };
     }, [city]);
 
-    // useEffect(() => {
-    //     console.log("recent", recent);
-    // }, [recent])
-
-    // TODO Implement History with localstorage
 
     // TODO Autocomplete search
 
@@ -43,29 +40,36 @@ const Home = () => {
     return (
         <div className="Home">
             <div className="left">
-                {/* <form action=""></form> */}
-                <input type="text" className="search" placeholder={city} 
-                    onChange={
-                        (e) => cities = e.target.value} 
-                        />
-                <button type="submit" className="search-button" onClick={() => {setCity(cities)}}>Search</button>
+                <div className="search">
+                    <input type="text" className="search-input" placeholder={city}
+                        onChange={
+                            (e) => cities = e.target.value}
+                    />
+                    <button type="submit" className="search-button" onClick={() => { setCity(cities) }}>Search</button>
+                </div>
+                {/* Set recently searched cities to localStorage */}
                 <div className="history">
-                        <button id="history_1" onClick={() => {setCity(localStorage.getItem("recent_1"))}}>{localStorage.getItem("recent_1")}</button>
-                        <button id="history_2" onClick={() => {setCity(localStorage.getItem("recent_2"))}}>{localStorage.getItem("recent_2")}</button>
-                        <button id="history_3" onClick={() => {setCity(localStorage.getItem("recent_3"))}}>{localStorage.getItem("recent_3")}</button>
+                    <div className="history-name">Recent cities: </div>
+                    <div className="history-buttons">
+                        <button id="history_2" className="history-button" onClick={() => { setCity(localStorage.getItem("recent_2")) }}>{localStorage.getItem("recent_2")}</button>
+                        <button id="history_3" className="history-button" onClick={() => { setCity(localStorage.getItem("recent_3")) }}>{localStorage.getItem("recent_3")}</button>
+                        <button id="history_1" className="history-button" onClick={() => { setCity(localStorage.getItem("recent_1")) }}>{localStorage.getItem("recent_1")}</button>
+                    </div>
                 </div>
             </div>
             <div className="right">
                 <img className="image" src={`http://openweathermap.org/img/wn/${data.icon}@2x.png`} alt="WeatherIcon" />
                 <div className="data">
-                    <div>Name: {data.name}</div>
-                    <div className="description">Desc: {data.description}</div>
-                    <div className="temp">Sıcaklık: {data.temp}</div>
-                    <div className="feels_like">Hissedilen Sıcaklık: {data.feels_like}</div>
+                    <div className="data-name">Name: {data.name}</div>
+                    <div className="data-description">Desc: {data.description}</div>
+                    <div className="data-temp">Sıcaklık: {data.temp}</div>
+                    <div className="data-feels_like">Hissedilen Sıcaklık: {data.feels_like}</div>
                 </div>
-                <Link to="/details">
-                    <button type="button" className="detail-button">Details</button>
-                </Link>
+                <div className="details">
+                    <Link to="/details">
+                        <button type="button" className="detail-button">Details</button>
+                    </Link>
+                </div>
             </div>
         </div>
     );
