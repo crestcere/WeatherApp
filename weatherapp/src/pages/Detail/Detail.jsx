@@ -9,26 +9,28 @@ import "./detail.scss"
 const Detail = () => {
 
     const { data, setData, city, setCity } = useContext(GetContextData);
-    
-    const [detail, setDetail] = useState([]);
+
+    const [detail, setDetail] = useState({ list: [{main : "", weather : [{description : "", icon : ""}]}] });
 
     const detailapiData = async () => {
         const res = await axios
             .get(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=tr&APPID=${apikey}&units=metric`);
-        console.log("res detail: ", res);    
+        // console.log("res detail: ", res);  
         if (res.status === 200) {
+            // return res.data;
             setDetail(...[res.data]);
-            console.log(detail);
+            // console.log(detail);
         }
     }
-    
+
     useEffect(() => {
         detailapiData();
     }, []);
-    
+
     useEffect(() => {
         console.log("detail: ", detail);
     }, [detail])
+
 
 
     //TODO 48 hours forecast
@@ -39,26 +41,25 @@ const Detail = () => {
         document.body.classList.add("detail");
         return () => document.body.classList.remove("detail");
     }, [])
+
+    // Render
     return (
         <div className="Detail">
-            <div className="data" key={data.name}>
-                <div>Name: {data.name}</div>
-                <div className="description">Desc: {data.description}</div>
-                <div className="temp">Sıcaklık: {data.temp}</div>
-                <div className="feels_like">Hissedilen Sıcaklık: {data.feels_like}</div>
-                <div className="temp_min">En düşük Sıcaklık: {data.temp_min}</div>
-                <div className="temp_max">En yüksek Sıcaklık: {data.temp_max}</div>
-                <div className="humidity">Nem: {data.humidity}</div>
-                <div className="pressure">Basınç: {data.pressure}</div>
-            </div>
             <Link to="/home">
                 <button type="button" className="home-button">Home</button>
             </Link>
-            <div className="details">
+            <div className="details" key={Math.random()}>
                 {detail.list.map(resp => (
                     <div className="detailss">
                         {console.log("resp", resp)}
-                        <div>DT_TXT: {resp.dt_txt}</div>
+                        <div>{resp.dt_txt}</div>
+                        {/* <div>Weather: {resp.weather[0].description.icon}</div> */}
+                        <img className="dimage" src={`http://openweathermap.org/img/wn/${resp.weather[0].icon}@2x.png`} alt="dWeatherIcon" />
+                        {/* <div>Desc: {resp.weather[0].description}</div> */}
+                        <div>Feels like: {resp.main.feels_like}</div>
+                        <div>Temp: {resp.main.temp}</div>
+                        <div>Max Temp: {resp.main.temp_max}</div>
+                        <div>Min Temp: {resp.main.temp_min}</div>
                     </div>
                 ))}
             </div>
