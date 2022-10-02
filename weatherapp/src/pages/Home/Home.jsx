@@ -51,9 +51,9 @@ const Home = () => {
                 <div className="history">
                     <div className="history-name">Recent cities: </div>
                     <div className="history-buttons">
+                        <button id="history_1" className="history-button" onClick={() => { setCity(localStorage.getItem("recent_1")) }}>{localStorage.getItem("recent_1")}</button>
                         <button id="history_2" className="history-button" onClick={() => { setCity(localStorage.getItem("recent_2")) }}>{localStorage.getItem("recent_2")}</button>
                         <button id="history_3" className="history-button" onClick={() => { setCity(localStorage.getItem("recent_3")) }}>{localStorage.getItem("recent_3")}</button>
-                        <button id="history_1" className="history-button" onClick={() => { setCity(localStorage.getItem("recent_1")) }}>{localStorage.getItem("recent_1")}</button>
                     </div>
                 </div>
             </div>
@@ -64,6 +64,10 @@ const Home = () => {
                     <div className="data-description">Desc: {data.description}</div>
                     <div className="data-temp">Sıcaklık: {data.temp}</div>
                     <div className="data-feels_like">Hissedilen Sıcaklık: {data.feels_like}</div>
+                    <div className="temp_min">En düşük Sıcaklık: {data.temp_min}</div>
+                    <div className="temp_max">En yüksek Sıcaklık: {data.temp_max}</div>
+                    <div className="humidity">Nem: {data.humidity}</div>
+                    <div className="pressure">Basınç: {data.pressure}</div>
                 </div>
                 <div className="details">
                     <Link to="/details">
