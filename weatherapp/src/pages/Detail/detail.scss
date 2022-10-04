@@ -1,28 +1,29 @@
 $background-color: antiquewhite;
 $box-color: rgb(226, 204, 176);
 
-.detail {
+.Detail {
     border: 5px solid black;
     display: flex;
     background-color: $background-color;
-    justify-content: center;
+    // justify-content: center;
     align-items: center;
-    height: 100vh;
-    & .data {
-        border: solid 2px blue;
-    }
+    flex-direction: column;
+    height: 100%;
+    gap: 10px;
+    padding: 5px;
     & .home-button {
         width: 150px;
         border-radius: 10px;
+        border: 5px  solid green;
     }
 }
 
-.Detail {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+// .Detail {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+// }
 
 .details {
     border: solid 2px blue;
@@ -34,4 +35,7 @@ $box-color: rgb(226, 204, 176);
 
 .detailss {
     border: solid 2px purple;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

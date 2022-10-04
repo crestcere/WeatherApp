@@ -10,7 +10,7 @@ const Detail = () => {
 
     const { data, setData, city, setCity } = useContext(GetContextData);
 
-    const [detail, setDetail] = useState({ list: [{main : "", weather : [{description : "", icon : ""}]}] });
+    const [detail, setDetail] = useState({ list: [{ main: "", weather: [{ description: "", icon: "" }] }] });
 
     const detailapiData = async () => {
         const res = await axios
