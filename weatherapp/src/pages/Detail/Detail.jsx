@@ -51,11 +51,11 @@ const Detail = () => {
             <div className="details" key={Math.random()}>
                 {detail.list.map(resp => (
                     <div className="detailss">
-                        {console.log("resp", resp)}
+                        {/* {console.log("resp", resp)} */}
                         <div>{resp.dt_txt}</div>
                         {/* <div>Weather: {resp.weather[0].description.icon}</div> */}
                         <img className="dimage" src={`http://openweathermap.org/img/wn/${resp.weather[0].icon}@2x.png`} alt="dWeatherIcon" />
-                        {/* <div>Desc: {resp.weather[0].description}</div> */}
+                        <div>Desc: {resp.weather[0].description}</div>
                         <div>Feels like: {resp.main.feels_like}</div>
                         <div>Temp: {resp.main.temp}</div>
                         <div>Max Temp: {resp.main.temp_max}</div>
