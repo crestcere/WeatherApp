@@ -69,7 +69,7 @@ const Home = () => {
                     <div className="humidity">Nem: {data.humidity}</div>
                     <div className="pressure">Basınç: {data.pressure}</div>
                 </div>
-                <div className="details">
+                <div className="details-button">
                     <Link to="/details">
                         <button type="button" className="detail-button">Details</button>
                     </Link>

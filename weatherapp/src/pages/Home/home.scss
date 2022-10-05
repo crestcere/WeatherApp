@@ -116,6 +116,7 @@ $button_hover-background-color: rgba(180, 110, 19, 0.541);
         // margin-bottom: 5px;
     }
     & .detail-button {
+        border: solid 1px black;
         background-color: red;
         width: 200px;
         border-radius: 10px;

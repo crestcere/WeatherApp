@@ -3,6 +3,8 @@ import { GetContextData } from "../../context";
 import { Link } from "react-router-dom";
 import apikey from "../../components/Getdata/apikey";
 import axios from "axios";
+// import { withLoading } from "../../hocs";
+import withLoading from "../../hocs/withLoading/withLoading";
 
 import "./detail.scss"
 
@@ -22,6 +24,8 @@ const Detail = () => {
             // console.log(detail);
         }
     }
+    
+    setLoading(false);
 
     useEffect(() => {
         detailapiData();
@@ -67,4 +71,4 @@ const Detail = () => {
     );
 };
 
-export default Detail;
+export default withLoading(Detail);
