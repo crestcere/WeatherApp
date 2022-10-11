@@ -1,18 +1,23 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
-const withLoading = WrappedComponent => {
+// function withLoading(Component) {
+const withLoading = Component => {
+    // const [Loading, setLoading] = useState(true);
     return props => {
-      const [loading, setLoading] = useState(true);
-      return (
-        <>
-          {loading}
-          <WrappedComponent
-            setLoading={setLoading}
-            {...props}
-          />
-        </>
-      );
+        const [loading, setLoading] = useState(false);
+        // if (!loading) return <Component loading={loading} {...props} />
+        // return (
+        //     <div>Loading...</div>
+        // );
+        if (loading) { return(
+            <div>Loading...</div>
+        ) }
+        else {
+            return(
+                <Component loading = {setLoading} {...props} />
+            )
+        }
     };
-  };
+};
 
 export default withLoading;
